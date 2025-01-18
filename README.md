@@ -6,7 +6,8 @@ A simple command-line interface (CLI) task manager application built with Go and
 
 - Add new tasks
 - List all tasks
-
+- Mark tasks as completed
+- Persistent storage of tasks in a file
 
 ## Installing
 First, use `go get` to install the latest version of the library.
