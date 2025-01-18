@@ -13,8 +13,9 @@ First, use `go get` to install the latest version of the library.
 
 ```go
 go get -u github.com/spf13/cobra@latest
-
+```
 Then, import Cobra into your application:
 
+```go
 import "github.com/spf13/cobra"
 ```
