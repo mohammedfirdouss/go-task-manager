@@ -4,8 +4,9 @@ import (
     "fmt"
     "os"
 
-    "github.com/mohammedfirdouss/go-task-manager/cli/internal/task"
     "github.com/spf13/cobra"
+    "github.com/mohammedfirdouss/go-task-manager/cli/internal/task"
+    "github.com/mohammedfirdouss/go-task-manager/cli/internal/storage"
 )
 
 var addCmd = &cobra.Command{
@@ -16,7 +17,11 @@ var addCmd = &cobra.Command{
         description := args[0]
         newTask := task.NewTask(len(task.ListTasks())+1, description)
 
-        err := task.AddTask(*newTask)
+        // Create an instance of Storage (which implements TaskStorage)
+        storage := &storage.Storage{}
+
+        // Pass the storage instance to AddTask
+        err := task.AddTask(*newTask, storage)
         if err != nil {
             fmt.Printf("Error adding task: %v\n", err)
             os.Exit(1)

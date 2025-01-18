@@ -6,9 +6,10 @@ import (
     "strconv"
 
     "github.com/spf13/cobra"
-	"github.com/mohammedfirdouss/go-task-manager/cli/internal/task"
+    "github.com/mohammedfirdouss/go-task-manager/cli/internal/task"
+    "github.com/mohammedfirdouss/go-task-manager/cli/internal/storage"
 )
- 
+
 var completeCmd = &cobra.Command{
     Use:   "complete [task ID]",
     Short: "Mark a task as completed",
@@ -20,7 +21,11 @@ var completeCmd = &cobra.Command{
             os.Exit(1)
         }
 
-        err = task.CompleteTask(id)
+        // Create an instance of Storage (which implements TaskStorage)
+        storage := &storage.Storage{}
+
+        // Pass the storage instance to CompleteTask
+        err = task.CompleteTask(id, storage)
         if err != nil {
             fmt.Printf("Error completing task: %v\n", err)
             os.Exit(1)
