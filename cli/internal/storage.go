@@ -1,5 +1,8 @@
-// This is gonna be a lot of work
-
 package internal
+
+import (
+    "os"
+    "fmt"
+)
 
 func main () {}
