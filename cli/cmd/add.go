@@ -14,12 +14,9 @@ var addCmd = &cobra.Command{
     Args:  cobra.ExactArgs(1),
     Run: func(cmd *cobra.Command, args []string) {
         description := args[0]
-        newTask := task.Task{
-            Description: description,
-            Completed:   false,
-        }
+        newTask := task.NewTask(len(task.ListTasks())+1, description)
 
-        err := task.AddTask(newTask)
+        err := task.AddTask(*newTask)
         if err != nil {
             fmt.Printf("Error adding task: %v\n", err)
             os.Exit(1)
