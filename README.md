@@ -5,4 +5,16 @@ A simple command-line interface (CLI) task manager application built with Go and
 ## Features
 
 - Add new tasks
+- List all tasks
 
+
+## Installing
+First, use `go get` to install the latest version of the library.
+
+```go
+go get -u github.com/spf13/cobra@latest
+
+Then, import Cobra into your application:
+
+import "github.com/spf13/cobra"
+```
