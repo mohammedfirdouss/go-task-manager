@@ -1,25 +1,68 @@
-# Task Manager CLI
+# 📝 Task Manager CLI
 
 A simple command-line interface (CLI) task manager application built with Go and Cobra. This application allows users to manage their tasks efficiently through a set of commands.
 
-## Features
+## ✨ Features
+- ➕ Add new tasks
+- 📋 List all tasks
+- ✅ Mark tasks as completed
+- 💾 Persistent storage of tasks in a JSON file
 
-- Add new tasks
-- List all tasks
-- Mark tasks as completed
-- Persistent storage of tasks in a file
+## 🚀 Installation
 
-## Installation
+
+### Steps
 
 1. Clone the repository:
+   ```bash
+   git clone https://github.com/mohammedfirdouss/go-task-manager.git
+   cd go-task-manager
    ```
-   git clone <repository-url>
+
+2. Build the CLI:
+   ```bash
+   go build -o task-manager cli/main.go
    ```
-2. Navigate to the project directory:
+
+3. Run the CLI:
+   ```bash
+   ./task-manager
    ```
-   cd cli
+
+# 📚 Usage
+
+### ➕ Add a Task
+``` bash
+./task-manager add "Your task description"
+```
+
+### ✅ Complete a Task
+```bash
+./task-manager complete <task ID>
+```
+
+📋 List All Tasks
+```bash
+./task-manager list
+```
+
+## 🤝 Contributing
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
    ```
-3. Install the dependencies:
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your feature"
    ```
-   go mod tidy
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
    ```
+5. Open a pull request.
+
+
+Thank you for contributing! 😊
