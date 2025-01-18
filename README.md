@@ -1,2 +1,8 @@
-# go-task-manager
-A CLI Task Manager is a terminal-based application that enables users to add, delete, and update tasks directly from the command line. 
+# Task Manager CLI
+
+A simple command-line interface (CLI) task manager application built with Go and Cobra. This application allows users to manage their tasks efficiently through a set of commands.
+
+## Features
+
+- Add new tasks
+
