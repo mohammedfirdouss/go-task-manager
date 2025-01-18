@@ -1,11 +1,9 @@
 package task
 
 import (
-    "encoding/json"
-    "os"
-	"fmt"
-
+    "fmt"
 )
+
 
 type Task struct {
     ID          int    `json:"id"`
@@ -13,10 +11,16 @@ type Task struct {
     Completed   bool   `json:"completed"`
 }
 
+type TaskStorage interface {
+    SaveTasks(tasks []Task) error
+    LoadTasks(tasks *[]Task) error
+}
+
 var tasks []Task
 
-func init() {
-    loadTasks()
+// Initialize the task list using the provided TaskStorage.
+func Init(storage TaskStorage) error {
+    return storage.LoadTasks(&tasks)
 }
 
 func NewTask(id int, description string) *Task {
@@ -27,16 +31,16 @@ func NewTask(id int, description string) *Task {
     }
 }
 
-func AddTask(t Task) error {
+func AddTask(t Task, storage TaskStorage) error {
     tasks = append(tasks, t)
-    return saveTasks()
+    return storage.SaveTasks(tasks)
 }
 
-func CompleteTask(id int) error {
+func CompleteTask(id int, storage TaskStorage) error {
     for i, task := range tasks {
         if task.ID == id {
             tasks[i].Completed = true
-            return saveTasks()
+            return storage.SaveTasks(tasks)
         }
     }
     return fmt.Errorf("task with ID %d not found", id)
@@ -45,39 +49,3 @@ func CompleteTask(id int) error {
 func ListTasks() []Task {
     return tasks
 }
-
-func saveTasks() error {
-    file, err := os.Create("tasks.json")
-    if err != nil {
-        return err
-    }
-    defer file.Close()
-
-    data, err := json.Marshal(tasks)
-    if err != nil {
-        return err
-    }
-
-    _, err = file.Write(data)
-    return err
-}
-
-func loadTasks() error {
-    file, err := os.Open("tasks.json")
-    if err != nil {
-        if os.IsNotExist(err) {
-            return nil
-        }
-        return err
-    }
-    defer file.Close()
-
-	data, err := os.ReadFile("tasks.json")
-	if err != nil {
-		if os.IsNotExist(err) {
-			return nil // File doesn't exist, no tasks to load
-		}
-		return err 
-	}
-	return json.Unmarshal(data, &tasks)
-}	
