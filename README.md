@@ -22,7 +22,7 @@ A simple command-line interface (CLI) task manager application built with Go and
 3. Install the dependencies:
    ```
    go mod tidy
-   ``
+   ```
 
 ## Installing
 First, use `go get` to install the latest version of the library.
