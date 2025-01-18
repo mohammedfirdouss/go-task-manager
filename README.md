@@ -9,6 +9,21 @@ A simple command-line interface (CLI) task manager application built with Go and
 - Mark tasks as completed
 - Persistent storage of tasks in a file
 
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```
+   cd cli
+   ```
+3. Install the dependencies:
+   ```
+   go mod tidy
+   ``
+
 ## Installing
 First, use `go get` to install the latest version of the library.
 
