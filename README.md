@@ -36,15 +36,16 @@ A simple command-line interface (CLI) task manager application built with Go and
 ./task-manager add "Your task description"
 ```
 
+📋 List All Tasks
+```bash
+./task-manager list
+```
+
 ### ✅ Complete a Task
 ```bash
 ./task-manager complete <task ID>
 ```
 
-📋 List All Tasks
-```bash
-./task-manager list
-```
 
 ## 🤝 Contributing
 Contributions are welcome! Please follow these steps:
