@@ -16,8 +16,8 @@ var addCmd = &cobra.Command{
     Run: func(cmd *cobra.Command, args []string) {
         description := args[0]
         
-        // Generate a unique ID for the new task
-        newTask := task.NewTask(task.GenerateTaskID(), description)
+        // Create a new task with a unique ID
+        newTask := task.NewTask(description)
 
         // Create an instance of Storage (which implements TaskStorage)
         storage := &storage.Storage{}
