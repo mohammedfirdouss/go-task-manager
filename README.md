@@ -7,6 +7,7 @@ A simple command-line interface (CLI) task manager application built with Go and
 - 📋 List all tasks
 - ✅ Mark tasks as completed
 - 💾 Persistent storage of tasks in a JSON file
+- Clear all tasks when needed.
 
 ## 🚀 Installation
 
@@ -44,6 +45,11 @@ A simple command-line interface (CLI) task manager application built with Go and
 ### ✅ Complete a Task
 ```bash
 ./task-manager complete <task ID>
+```
+
+### To clear all tasks
+```bash
+./task-manager clear
 ```
 
 
