@@ -3,6 +3,7 @@ package storage
 import (
     "encoding/json"
     "os"
+
     "github.com/mohammedfirdouss/go-task-manager/cli/internal/task"
 )
 
@@ -40,5 +41,19 @@ func (s *Storage) LoadTasks(tasks *[]task.Task) error {
     if err != nil {
         return err
     }
-    return json.Unmarshal(data, tasks)
+    err = json.Unmarshal(data, tasks)
+    if err != nil {
+        return err
+    }
+
+    // Update nextID based on the highest ID in the loaded tasks
+    maxID := 0
+    for _, t := range *tasks {
+        if t.ID > maxID {
+            maxID = t.ID
+        }
+    }
+    task.SetNextID(maxID + 1)
+
+    return nil
 }
