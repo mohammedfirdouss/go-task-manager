@@ -4,7 +4,6 @@ import (
     "fmt"
 )
 
-
 type Task struct {
     ID          int    `json:"id"`
     Description string `json:"description"`
@@ -16,13 +15,12 @@ type TaskStorage interface {
     LoadTasks(tasks *[]Task) error
 }
 
-
 var nextID int
+var tasks []Task
 
 func init() {
     nextID = 1 // Initialize the ID counter
 }
-
 
 // GenerateTaskID generates a new unique task ID.
 func GenerateTaskID() int {
@@ -35,8 +33,6 @@ func GenerateTaskID() int {
 func SetNextID(id int) {
     nextID = id
 }
-
-var tasks []Task
 
 // Initialize the task list using the provided TaskStorage.
 func Init(storage TaskStorage) error {
@@ -57,9 +53,9 @@ func Init(storage TaskStorage) error {
     return nil
 }
 
-func NewTask(id int, description string) *Task {
+func NewTask(description string) *Task {
     return &Task{
-        ID:          id,
+        ID:          GenerateTaskID(),
         Description: description,
         Completed:   false,
     }
@@ -71,7 +67,7 @@ func AddTask(t Task, storage TaskStorage) error {
 }
 
 func ClearTasks(storage TaskStorage) error {
-    tasks = []Task{} 
+    tasks = []Task{}
     return storage.SaveTasks(tasks) // Save the empty list to storage
 }
 
