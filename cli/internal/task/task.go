@@ -16,6 +16,19 @@ type TaskStorage interface {
     LoadTasks(tasks *[]Task) error
 }
 
+var nextID int
+
+func init() {
+    nextID = 1 // Initialize the ID counter
+}
+
+func GenerateTaskID() int {
+    id := nextID
+    nextID++
+    return id
+}
+
+
 var tasks []Task
 
 // Initialize the task list using the provided TaskStorage.
