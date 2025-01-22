@@ -36,6 +36,12 @@ func AddTask(t Task, storage TaskStorage) error {
     return storage.SaveTasks(tasks)
 }
 
+func ClearTasks(storage TaskStorage) error {
+    tasks = []Task{} 
+    return storage.SaveTasks(tasks) // Save the empty list to storage
+}
+
+
 func CompleteTask(id int, storage TaskStorage) error {
     for i, task := range tasks {
         if task.ID == id {
