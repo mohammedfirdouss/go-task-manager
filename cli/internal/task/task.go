@@ -16,18 +16,25 @@ type TaskStorage interface {
     LoadTasks(tasks *[]Task) error
 }
 
+
 var nextID int
 
 func init() {
     nextID = 1 // Initialize the ID counter
 }
 
+
+// GenerateTaskID generates a new unique task ID.
 func GenerateTaskID() int {
     id := nextID
     nextID++
     return id
 }
 
+// SetNextID sets the next ID to be used for new tasks.
+func SetNextID(id int) {
+    nextID = id
+}
 
 var tasks []Task
 
@@ -53,7 +60,6 @@ func ClearTasks(storage TaskStorage) error {
     tasks = []Task{} 
     return storage.SaveTasks(tasks) // Save the empty list to storage
 }
-
 
 func CompleteTask(id int, storage TaskStorage) error {
     for i, task := range tasks {
