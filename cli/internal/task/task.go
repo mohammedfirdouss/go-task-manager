@@ -40,7 +40,21 @@ var tasks []Task
 
 // Initialize the task list using the provided TaskStorage.
 func Init(storage TaskStorage) error {
-    return storage.LoadTasks(&tasks)
+    err := storage.LoadTasks(&tasks)
+    if err != nil {
+        return err
+    }
+
+    // Update nextID based on the highest ID in the loaded tasks
+    maxID := 0
+    for _, t := range tasks {
+        if t.ID > maxID {
+            maxID = t.ID
+        }
+    }
+    SetNextID(maxID + 1)
+
+    return nil
 }
 
 func NewTask(id int, description string) *Task {
