@@ -19,7 +19,6 @@ A simple command-line interface (CLI) task manager application built with Go and
    git clone https://github.com/mohammedfirdouss/go-task-manager.git
    cd go-task-manager
    ```
-
 2. Build the CLI:
    ```bash
    go build -o task-manager cli/main.go
@@ -51,6 +50,9 @@ A simple command-line interface (CLI) task manager application built with Go and
 ```bash
 ./task-manager clear
 ```
+![Screenshot (1348)](https://github.com/user-attachments/assets/69fdda36-a60f-4edb-b93c-6a8a50b6f5ae)
+![Screenshot (1350)](https://github.com/user-attachments/assets/5b3da7ea-bb56-42b4-a08e-d29be34cee69)
+![Screenshot (1351)](https://github.com/user-attachments/assets/1be0aa71-af60-42cb-aca8-7d77db9d1c46)
 
 
 ## 🤝 Contributing
