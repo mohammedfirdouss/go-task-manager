@@ -62,9 +62,18 @@ func NewTask(description string) *Task {
 }
 
 func AddTask(t Task, storage TaskStorage) error {
+    // Check if the task already exists
+    for _, existingTask := range tasks {
+        if existingTask.Description == t.Description && existingTask.Completed == t.Completed {
+            return fmt.Errorf("task already exists")
+        }
+    }
+
+    // Append the new task
     tasks = append(tasks, t)
     return storage.SaveTasks(tasks)
 }
+
 
 func ClearTasks(storage TaskStorage) error {
     tasks = []Task{}
