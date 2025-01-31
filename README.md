@@ -11,7 +11,6 @@ A simple command-line interface (CLI) task manager application built with Go and
 
 ## 🚀 Installation
 
-
 ### Steps
 
 1. Clone the repository:
